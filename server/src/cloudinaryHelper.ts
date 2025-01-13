@@ -1,0 +1,17 @@
+
+import cloudinary from "./cloudinaryConfig";
+
+
+ export const uploadCloudinary = async(filepath :any )=>{
+    try {
+        const result = await cloudinary.uploader.upload(filepath)
+        return {
+            url : result.secure_url,
+            publicId : result.public_id
+        }
+    } catch (error) {
+        console.error("Error while uploading to cloudinary");
+        throw new Error("Error while uploading to cloudinary")
+        
+    }
+ }
