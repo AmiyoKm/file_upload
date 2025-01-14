@@ -1,6 +1,5 @@
 import mongoose from 'mongoose'
 import express, { Request, Response } from "express"
-import multer from "multer"
 import dotenv from 'dotenv'
 import cookieParser from 'cookie-parser'
 dotenv.config()
@@ -11,7 +10,7 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 app.use(cookieParser())
-const upload = multer({ dest: 'uploads/' })
+
 
 app.use("/api/user/", userRouter)
 app.use("/api/uploads/", imageRouter )

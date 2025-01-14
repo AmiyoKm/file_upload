@@ -4,6 +4,7 @@ import { uploadCloudinary } from "../cloudinaryHelper"
 import fs from "fs"
 import cloudinary from "../cloudinaryConfig"
 import { SortOrder } from "mongoose"
+import UserModel from "../model/user.model"
 
 export const uploadImage = async (req: Request, res: Response) => {
     const { caption, description } = req.body;
@@ -54,8 +55,11 @@ export const fetchImages = async ( req : Request, res : Response) => {
         if (images.length === 0) {
             return res.status(404).json({ success: false, error: "No images found" })
         }
-        
-        res.status(200).json({ success: true, currentPage: page, totalImages, totalPages, images })
+        const user = await UserModel.findById(req.user.userId)
+        if(!user){
+            return res.status(404).json({ success: false, error: "No user found" })
+        }      
+        res.status(200).json({ success: true, currentPage: page, totalImages, totalPages, images ,user })
         
     } catch (error) {
         console.log(error);

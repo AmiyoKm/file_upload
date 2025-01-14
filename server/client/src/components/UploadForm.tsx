@@ -82,7 +82,7 @@ const UploadForm = ({ form, onSubmit ,isPending }: UploadFormProps) => {
                       onChange(e.target.files);
                     }}
                     {...rest}
-                    className="w-full h-28 px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                    className="w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
                   />
                 </FormControl>
                 <FormDescription className="text-sm text-gray-500">

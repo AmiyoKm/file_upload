@@ -5,7 +5,7 @@ const Header = () => {
   return (
     <div>
         <header className=" flex justify-between items-center p-5 shadow-md bg-white">
-                    <Link to="/" className="flex items-center">
+                    <Link to="/home" className="flex items-center">
                         <img className="w-20" src={Glance} alt="Glance Logo" />
                     </Link>
                     <input
