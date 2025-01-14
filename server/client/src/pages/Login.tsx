@@ -26,7 +26,14 @@ const Login = () => {
         mutationKey : ['login'],
         mutationFn : login,
         onSuccess : ()=> {
-           navigate('/home')
+          setTimeout(()=>{
+            toast({
+              variant : 'default',
+              title : 'Success',
+              description : 'Logged in successfully'
+            })
+            navigate('/home')
+          }, 2500)
         },
         onError : (error)=> {
             toast({

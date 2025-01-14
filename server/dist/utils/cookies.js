@@ -2,7 +2,6 @@ import { thirtyDaysFromNow } from "./time.js";
 const secure = process.env.NODE_ENV !== "development";
 const defaults = {
     sameSite: "strict",
-    httpOnly: true,
     secure: secure
 };
 export const getAccessTokenCookieOptions = () => ({

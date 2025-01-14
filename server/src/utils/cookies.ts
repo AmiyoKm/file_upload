@@ -6,13 +6,11 @@ type Params ={
     refreshToken : string
     
 }
-const secure = process.env.NODE_ENV !== "development"
 
-const defaults  : CookieOptions  = {
-    sameSite : "strict",
-    httpOnly : true,
-    secure : secure
-}
+const defaults: CookieOptions = {
+    sameSite: "strict",
+    secure: true // Recommended for HTTPS only
+};
 
 export const getAccessTokenCookieOptions = () : CookieOptions=>({
     ...defaults ,

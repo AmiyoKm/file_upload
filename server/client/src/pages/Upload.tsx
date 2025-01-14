@@ -7,10 +7,12 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
 import { AxiosError } from "axios";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router";
 import { z } from "zod";
 
 const Upload = () => {
   const { toast } = useToast();
+  const navigate = useNavigate();
   const form = useForm<z.infer<typeof uploadSchema>>({
     resolver: zodResolver(uploadSchema),
     defaultValues: {
@@ -29,6 +31,7 @@ const Upload = () => {
         description: "Your image has been uploaded successfully",
       });
       form.reset();
+      navigate("/home");
     },
     onError: (error: AxiosError) => {
       console.log(error.response);
@@ -50,7 +53,7 @@ const Upload = () => {
     }
     // @ts-ignore
     mutate(formData);
-    form.reset();
+
   };
   return (
     <div>

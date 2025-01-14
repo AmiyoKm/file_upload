@@ -21,7 +21,6 @@ const Home = () => {
       setData(ImageData.data as ImageApiResponse);
     }
   }, [isSuccess, ImageData, page]);
-  console.log(data);
 
   return (
     <div>

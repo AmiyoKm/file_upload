@@ -8,10 +8,11 @@ import { useMutation } from "@tanstack/react-query";
 import { register } from "@/utils/API";
 import { useToast } from "@/hooks/use-toast";
 import { AxiosError } from "axios";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { BackgroundLines } from "@/components/ui/background-lines";
 
 const Register = () => {
+  const navigate =useNavigate()
   const { toast } = useToast();
   const form = useForm<z.infer<typeof registerSchema>>({
     resolver: zodResolver(registerSchema),
@@ -26,7 +27,9 @@ const Register = () => {
     mutationKey: ["register"],
     mutationFn: register,
     onSuccess: () => {
-      console.log("success");
+      setTimeout(()=> {
+        navigate("/home")
+      }, 2500)
     },
     onError: (error: AxiosError) => {
       toast({
