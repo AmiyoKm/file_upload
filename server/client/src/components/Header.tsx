@@ -1,7 +1,9 @@
 import { Link } from 'react-router'
 import Glance from "../assets/Glance.png";
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
+import { logout } from '@/utils/API';
 const Header = () => {
+      
   return (
     <div>
         <header className=" flex justify-between items-center p-5 shadow-md bg-white">
@@ -29,7 +31,7 @@ const Header = () => {
                         >
                             Notifications
                         </Link>
-                        <Link to="/profile">
+                        <Link to="/login" onClick={logout}>
                             <Avatar>
                                 <AvatarImage
                                     src="https://github.com/shadcn.png"

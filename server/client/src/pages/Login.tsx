@@ -42,7 +42,7 @@ const Login = () => {
         
     }
   return (
-    <div className="h-screen relative w-full overflow-hidden bg-slate-900 flex flex-col items-center justify-center rounded-lg">
+    <div className="h-screen relative w-full overflow-hidden flex flex-col items-center justify-center rounded-lg">
     <BackgroundLines className="flex items-center justify-center w-full flex-col px-4">
     <h1 className={cn("md:text-4xl text-xl text-black font-semibold relative z-20 mb-4")}>
       Login

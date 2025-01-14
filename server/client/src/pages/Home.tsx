@@ -25,12 +25,13 @@ const Home = () => {
 
   return (
     <div>
-      <main className="min-h-screen bg-gray-100">
-        {/* Header Section */}
+      <main className="min-h-screen bg-gray-100 flex justify-between  flex-col "> 
+       
         <Header />
 
-        {/* Hero Section */}
-        <section className="bg-blue-500 text-white p-10 text-center">
+       {
+          data ? <>
+          <section className="bg-blue-500 text-white p-10 text-center">
           <h1 className="text-4xl font-bold">
             Welcome back, {data ? data.user.username : null}!
           </h1>
@@ -42,31 +43,41 @@ const Home = () => {
           </Link>
         </section>
 
-        {/* Feed Section */}
-        <section className="p-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-9">
+       
+        <section className="p-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-4 ">
           {data?.images.map((post) => (
-            <div
-              key={post._id}
-              className="bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-xl cursor-pointer transition-shadow duration-300"
-            >
-              <DirectionAwareHover className="rounded-t-lg" imageUrl={post.url}>
-                <div className="flex w-72 justify-between items-center">
+           
+              <DirectionAwareHover  key={post._id} className="shadow-lg rounded-lg overflow-hidden hover:shadow-xl cursor-pointer transition-shadow duration-300" imageUrl={post.url}>
+                <div className="flex w-80 justify-between items-center">
                   <div>
                     <p className="font-bold text-xl">{post.caption}</p>
                     <p className="font-normal text-sm">{post.description}</p>
                   </div>
-                  <div className="flex items-center space-x-2">
+                  <div className="flex items-center space-x-2 ">
                     <IoIosHeart className="text-red-500 text-2xl" />
-                    {/* <span>{post.likes}</span> */}
                   </div>
                 </div>
               </DirectionAwareHover>
-            </div>
+      
           ))}
         </section>
         <div>
           <HomePagination data={data}  page={page}  setPage={setPage}/>
         </div>
+          </> : 
+            <div className="flex flex-col items-center justify-center h-full py-20">
+              <IoIosHeart className="text-gray-400 text-6xl mb-4" />
+              <h2 className="text-2xl font-semibold text-gray-600 mb-2">No images posted yet</h2>
+              <p className="text-gray-500 mb-6">Please post some images to share your moments with the community.</p>
+              <Link to="/upload">
+              <Button className="bg-blue-500 text-white font-semibold py-2 px-4 rounded">
+                Upload New Photo
+              </Button>
+              </Link>
+            </div>
+
+       }
+        
 
         {/* Footer Section */}
         <footer className="text-center py-5 bg-white shadow-inner mt-10">

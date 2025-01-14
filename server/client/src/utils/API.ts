@@ -16,3 +16,7 @@ export const upload = async ( data : z.infer<typeof uploadSchema> ) => (
 export const getImages = async (page : string) => (
     await API.get(`api/uploads/?page=${page}&limit=8`)
 )
+
+export const logout = async ()=> (
+    await API.post("api/user/logout")
+)
